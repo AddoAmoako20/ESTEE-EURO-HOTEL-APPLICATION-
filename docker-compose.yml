@@ -1,0 +1,86 @@
+services:
+
+  frontend:
+
+    build: ./frontend
+
+    container_name: estee-euro-frontend
+
+    ports:
+      - "8080:80"
+
+    depends_on:
+      - backend
+
+    networks:
+      - estee-euro-network
+
+
+  backend:
+
+    build: ./backend
+
+    container_name: estee-euro-backend
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - ./backend/.env
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    networks:
+      - estee-euro-network
+
+
+  postgres:
+
+    image: postgres:16
+
+    container_name: estee-euro-postgres
+
+    environment:
+
+      POSTGRES_DB: estee_euro
+
+      POSTGRES_USER: estee_user
+
+      POSTGRES_PASSWORD: estee_password
+
+    volumes:
+
+      - postgres_data:/var/lib/postgresql/data
+
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    healthcheck:
+
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U estee_user -d estee_euro"
+        ]
+
+      interval: 5s
+
+      timeout: 5s
+
+      retries: 10
+
+    networks:
+      - estee-euro-network
+
+
+networks:
+
+  estee-euro-network:
+
+    driver: bridge
+
+
+volumes:
+
+  postgres_data:
