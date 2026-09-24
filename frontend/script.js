@@ -240,60 +240,61 @@ if (bookingForm) {
 // DARK / LIGHT MODE
 // ===============================
 
-const themeToggle =
-    document.getElementById("themeToggle");
+const themeToggle = document.getElementById("themeToggle");
 
 if (themeToggle) {
 
-    const savedTheme =
-        localStorage.getItem("estee-theme");
+    const savedTheme = localStorage.getItem("estee-theme");
 
-
+    // Default is dark mode. Button shows the current theme.
     if (savedTheme === "light") {
-
-        document.body.classList.add(
-            "light-mode"
-        );
-
-        themeToggle.textContent =
-            "🌙 Dark";
+        document.body.classList.add("light-mode");
+        themeToggle.textContent = "Light";
+    } else {
+        document.body.classList.remove("light-mode");
+        themeToggle.textContent = "Dark";
     }
 
+    themeToggle.addEventListener("click", () => {
 
-    themeToggle.addEventListener(
-        "click",
-        () => {
+        const isLightMode =
+            document.body.classList.toggle("light-mode");
 
-            document.body.classList.toggle(
-                "light-mode"
-            );
-
-
-            if (
-                document.body.classList.contains(
-                    "light-mode"
-                )
-            ) {
-
-                localStorage.setItem(
-                    "estee-theme",
-                    "light"
-                );
-
-                themeToggle.textContent =
-                    "🌙 Dark";
-
-            } else {
-
-                localStorage.setItem(
-                    "estee-theme",
-                    "dark"
-                );
-
-                themeToggle.textContent =
-                    "☀️ Light";
-            }
-
+        if (isLightMode) {
+            localStorage.setItem("estee-theme", "light");
+            themeToggle.textContent = "Light";
+        } else {
+            localStorage.setItem("estee-theme", "dark");
+            themeToggle.textContent = "Dark";
         }
+    });
+}
+
+
+// ===============================
+// SCROLL REVEAL
+// ===============================
+
+const revealTargets = document.querySelectorAll(
+    ".section-heading, .about-grid, .room-card, .amenity, .gallery-grid, #bookingForm, .contact-card, .location-grid, .direct-booking, .video-container"
+);
+
+revealTargets.forEach((el) => el.classList.add("reveal"));
+
+if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
+
+    revealTargets.forEach((el) => revealObserver.observe(el));
+} else {
+    revealTargets.forEach((el) => el.classList.add("visible"));
 }

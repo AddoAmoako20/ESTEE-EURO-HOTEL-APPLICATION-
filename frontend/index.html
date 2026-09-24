@@ -11,6 +11,10 @@
         content="Welcome to ESTEE-EURO Hotel. Discover comfortable rooms, excellent hospitality and a memorable stay."
     >
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,8 +29,10 @@
             ESTEE<span>-EURO</span>
         </a>
 
-        <button class="menu-toggle" id="menuToggle">
-            ☰
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
 
         <nav id="navMenu">
@@ -35,14 +41,12 @@
             <a href="#rooms">Rooms</a>
             <a href="#gallery">Gallery</a>
             <a href="#video">Our Hotel</a>
+            <a href="#location">Location</a>
             <a href="#contact">Contact</a>
             <a href="#booking" class="nav-book">Book Now</a>
-            <li><a href="#location">Location</a></li>
-            <li>
-               <button id="themeToggle" class="theme-toggle" type="button">
-                ☀️ Light
-               </button>
-            </li>
+            <button id="themeToggle" class="theme-toggle" type="button">
+                Dark
+            </button>
         </nav>
 
     </div>
@@ -57,11 +61,11 @@
 
     <div class="hero-content">
 
-        <p class="small-title">WELCOME TO</p>
+        <p class="small-title">Welcome to</p>
 
         <h1>ESTEE-EURO</h1>
 
-        <p>
+        <p class="hero-lead">
             Comfort, elegance and warm hospitality
             for an unforgettable stay.
         </p>
@@ -82,6 +86,7 @@
 
 
 <!-- ================= ABOUT ================= -->
+ 
 
 <section class="section about" id="about">
 
@@ -111,25 +116,10 @@
 
             <div class="features">
 
-                <div>
-                    <span>✓</span>
-                    Comfortable Rooms
-                </div>
-
-                <div>
-                    <span>✓</span>
-                    Friendly Service
-                </div>
-
-                <div>
-                    <span>✓</span>
-                    Convenient Location
-                </div>
-
-                <div>
-                    <span>✓</span>
-                    Quality Hospitality
-                </div>
+                <div class="feature-item">Comfortable Rooms</div>
+                <div class="feature-item">Friendly Service</div>
+                <div class="feature-item">Convenient Location</div>
+                <div class="feature-item">Quality Hospitality</div>
 
             </div>
 
@@ -329,25 +319,25 @@
         <div class="amenities-grid">
 
             <div class="amenity">
-                <div class="amenity-icon">🛏️</div>
+                <div class="amenity-icon" aria-hidden="true"></div>
                 <h3>Comfortable Rooms</h3>
-                <p>Relax in a comfortable environment.</p>
+                <p>Relax in a thoughtfully prepared space.</p>
             </div>
 
             <div class="amenity">
-                <div class="amenity-icon">📶</div>
+                <div class="amenity-icon" aria-hidden="true"></div>
                 <h3>Wi-Fi</h3>
-                <p>Stay connected during your visit.</p>
+                <p>Stay connected throughout your visit.</p>
             </div>
 
             <div class="amenity">
-                <div class="amenity-icon">🅿️</div>
+                <div class="amenity-icon" aria-hidden="true"></div>
                 <h3>Parking</h3>
                 <p>Convenient parking for our guests.</p>
             </div>
 
             <div class="amenity">
-                <div class="amenity-icon">🍽️</div>
+                <div class="amenity-icon" aria-hidden="true"></div>
                 <h3>Dining</h3>
                 <p>Enjoy convenient dining options.</p>
             </div>
@@ -616,7 +606,7 @@
                     target="_blank"
                     class="whatsapp-btn"
                 >
-                    💬 Book via WhatsApp
+                    Book via WhatsApp
                 </a>
 
 
@@ -628,7 +618,7 @@
                     href="mailto:eurohouse25@gmail.com"
                     class="email-btn"
                 >
-                    ✉️ Book via Email
+                    Book via Email
                 </a>
 
             </div>
@@ -659,8 +649,6 @@
 
             <div class="contact-card">
 
-                <span>📍</span>
-
                 <h3>Location</h3>
 
                 <p>
@@ -673,8 +661,6 @@
 
             <div class="contact-card">
 
-                <span>📞</span>
-
                 <h3>Phone / WhatsApp</h3>
 
                 <p>
@@ -686,8 +672,6 @@
 
 
             <div class="contact-card">
-
-                <span>✉️</span>
 
                 <h3>Email</h3>
 
@@ -725,7 +709,7 @@
                 <h3>ESTEE-EURO</h3>
 
                 <p>
-                    📍 MPHF+R59, Taifa<br>
+                    MPHF+R59, Taifa<br>
                     Accra, Ghana
                 </p>
 

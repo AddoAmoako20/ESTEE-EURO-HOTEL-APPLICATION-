@@ -16,9 +16,28 @@ CREATE TABLE IF NOT EXISTS bookings (
 
     room VARCHAR(100) NOT NULL,
 
+    price_per_night NUMERIC(10,2) NOT NULL,
+
+    nights INTEGER NOT NULL,
+
+    total_price NUMERIC(10,2) NOT NULL,
+
     message TEXT,
 
     status VARCHAR(30) DEFAULT 'pending',
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+
+
+CREATE TABLE IF NOT EXISTS admins (
+
+    id SERIAL PRIMARY KEY,
+
+    username VARCHAR(100) UNIQUE NOT NULL,
+
+    password_hash VARCHAR(255) NOT NULL,
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 

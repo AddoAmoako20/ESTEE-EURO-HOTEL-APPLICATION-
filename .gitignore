@@ -1,0 +1,40 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Backup / temp files
+*~
+*~*
+*.bak
+*.tmp
+*.temp
+
+# Build / coverage
+dist/
+build/
+coverage/
+.nyc_output/
+
+# Docker local data
+postgres_data/

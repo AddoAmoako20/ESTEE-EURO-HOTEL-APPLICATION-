@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | ESTEE-EURO Hotel</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+
+<!-- ================= LOGIN ================= -->
+
+<section id="loginView" class="login-view">
+    <div class="login-panel">
+        <p class="login-eyebrow">Administrator</p>
+        <h1 class="login-brand">ESTEE<span>-EURO</span></h1>
+        <p class="login-lead">Sign in to manage hotel bookings.</p>
+
+        <form id="loginForm" class="login-form" method="post" action="/admin" autocomplete="on">
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                required
+                autocomplete="username"
+                placeholder="Enter username"
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                autocomplete="current-password"
+                placeholder="Enter password"
+            >
+
+            <button type="submit" class="btn primary-btn" id="loginBtn">
+                Log in
+            </button>
+
+            <p id="loginError" class="form-message error" hidden></p>
+        </form>
+
+        <a href="/" class="login-back">← Back to website</a>
+    </div>
+</section>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboardView" class="dashboard-view" hidden>
+
+    <header class="admin-header">
+        <div class="admin-header-inner">
+            <div class="admin-brand-block">
+                <a href="/admin" class="logo">ESTEE<span>-EURO</span></a>
+                <span class="admin-badge">Admin</span>
+            </div>
+
+            <div class="admin-header-actions">
+                <span id="adminName" class="admin-name"></span>
+                <a href="/" class="header-link">Website</a>
+                <button type="button" id="logoutBtn" class="btn ghost-btn">
+                    Log out
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-main">
+
+        <div class="admin-intro">
+            <h1>Bookings</h1>
+            <p>Review guest requests, update status, and track stay revenue.</p>
+        </div>
+
+        <!-- Statistics -->
+        <section class="stats-grid" aria-label="Booking statistics">
+            <article class="stat-card">
+                <p class="stat-label">Total</p>
+                <p class="stat-value" id="statTotal">0</p>
+            </article>
+            <article class="stat-card pending">
+                <p class="stat-label">Pending</p>
+                <p class="stat-value" id="statPending">0</p>
+            </article>
+            <article class="stat-card confirmed">
+                <p class="stat-label">Confirmed</p>
+                <p class="stat-value" id="statConfirmed">0</p>
+            </article>
+            <article class="stat-card cancelled">
+                <p class="stat-label">Cancelled</p>
+                <p class="stat-value" id="statCancelled">0</p>
+            </article>
+            <article class="stat-card revenue">
+                <p class="stat-label">Confirmed revenue</p>
+                <p class="stat-value" id="statRevenue">GH₵0</p>
+            </article>
+        </section>
+
+        <!-- Filters -->
+        <section class="toolbar" aria-label="Search and filter">
+            <div class="search-wrap">
+                <label for="searchInput" class="visually-hidden">Search bookings</label>
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search by name, email, phone, room, or ID…"
+                >
+            </div>
+
+            <div class="filter-wrap">
+                <label for="statusFilter" class="visually-hidden">Filter by status</label>
+                <select id="statusFilter">
+                    <option value="">All statuses</option>
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+
+            <button type="button" id="refreshBtn" class="btn secondary-btn">
+                Refresh
+            </button>
+        </section>
+
+        <p id="dashboardMessage" class="form-message" hidden></p>
+
+        <!-- Bookings list -->
+        <section class="bookings-section" aria-label="All bookings">
+            <div id="bookingsEmpty" class="empty-state" hidden>
+                <p>No bookings match your filters.</p>
+            </div>
+
+            <div id="bookingsList" class="bookings-list"></div>
+        </section>
+
+    </main>
+</section>
+
+<script src="/admin.js"></script>
+</body>
+</html>
